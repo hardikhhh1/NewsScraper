@@ -7,10 +7,6 @@ angular.module('ScraperApp', [
   'ScraperApp.controllers',
 
   ])
-.service('StoryService', function(){
-     this.name='test'
-})
-
 .config(function ($interpolateProvider, $httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
 
@@ -31,35 +27,3 @@ angular.module('ScraperApp', [
       controller : 'StoryListController',
     })
 })
-
-// angular.module('tweeterApp', [
-//   'ui.router',
-//   'ngResource',
-//   'tweeterApp.services',
-//   'tweeterApp.controllers',
-// ])
-//   .config(function ($interpolateProvider, $httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider) {
-//     // Force angular to use square brackets for template tag
-//     // The alternative is using {% verbatim %}
-//     $interpolateProvider.startSymbol('[[').endSymbol(']]');
-
-    
-
-  //   $urlRouterProvider.otherwise('/');
-  //   $stateProvider
-  //     .state('tweets', {
-  //       url: '/',
-  //       templateUrl: 'static/tweeter/partials/tweet-list.html',
-  //       controller: 'TweetCtrl',
-  //     })
-  //     .state('my-tweets', {
-  //       url: '/:userId',
-  //       templateUrl: 'static/tweeter/partials/tweet-list.html',
-  //       controller: 'UserCtrl',
-  //     })
-  //     .state('profile', {
-  //       url: '/profile/:userId',
-  //       templateUrl: 'static/tweeter/partials/profile.html',
-  //       controller: 'UserCtrl',
-  //     })
-  // });

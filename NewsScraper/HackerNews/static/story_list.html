@@ -4,7 +4,13 @@ TEST PAGE - STORY LIST PAGE OPENED
 
 <div class="stories" id="story-target">
   <div class="story-container" ng-repeat="story in stories">
-    <div class="story-title"> [[ story.title ]]</div>
+    <div class="story-details"> 
+    <a href="[[ story.link ]]" target="_blank">[[ story.title ]]  </a>
+	    <button class="btn btn-info" ng-click="submitReview(story,true)" value="True">Good</button>
+		<button class="btn btn-alert" ng-click="submitReview(story,false)" value="False">Bad</button>
+		<button class="btn btn-alert" ng-click="deleteReview(story)">Delete</button>
+    </div>
+
     
   </div>
 </div>

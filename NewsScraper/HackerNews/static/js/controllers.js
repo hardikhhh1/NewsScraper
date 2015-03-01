@@ -10,33 +10,23 @@ hackerNewsController.controller('StoryListController', function StoryCtrl($scope
  		$scope.stories = response;
   	})
 
+  	$scope.submitReview = function (story, is_interested){
+  		story.is_interested  = is_interested;
+  		// console.log(story)
+  		// var updatedStory = new Story(story);
+  		story.$update(function (){
+  			 
+  		})
+  	}
+
+
+  	$scope.deleteReview = function (story){
+  		story.$delete(function (){
+  			 var index = $scope.stories.indexOf(story);
+  			 $scope.stories.splice(index, 1);
+  		})
+  	}
 });
 
 
 
-
-// var tweeterControllers = angular.module('tweeterApp.controllers', []);
-
-// tweeterControllers.controller('TweetCtrl', function TweetCtrl($scope, Tweet) {
-//   $scope.tweets = {};
-   
-//   Tweet.query(function(response) {
-//     $scope.tweets = response;
-//   });
-
-//   $scope.submitTweet = function(text) {
-//     var tweet = new Tweet({text: text});
-//     tweet.$save(function(){
-//       $scope.tweets.unshift(tweet);
-//     })
-//   }
-// });
-
-// tweeterControllers.controller('UserCtrl', function UserCtrl($scope, Tweet, User, AuthUser) {
-//   $scope.tweets = {};
-//   id = AuthUser.id;
-//   User.get({id:id}, function(response) {
-//     $scope.user = response;
-//     $scope.tweets = response.tweets;
-//   });
-// });

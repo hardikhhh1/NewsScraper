@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
 from serializers import StorySerializers
 from models import StoryModel
 from rest_framework import viewsets
@@ -23,7 +23,9 @@ class StoryListView(generics.ListCreateAPIView):
 class StoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = StoryModel.objects.all()
     serializer_class = StorySerializers
-
+    permission_classes = [
+        permissions.AllowAny
+    ]
 
 
 class HomePageView(viewsets.ModelViewSet):

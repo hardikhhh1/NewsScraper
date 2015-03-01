@@ -11,6 +11,7 @@ class StoryModel(models.Model):
 	points = models.IntegerField()
 	submitter = models.CharField(max_length=100, default='')
 	published_time = models.CharField(max_length=100, default='')
+	is_interested = models.BooleanField(default=True)
 	# num_comments = models.IntegerField()
 
 	def __str__(self):
