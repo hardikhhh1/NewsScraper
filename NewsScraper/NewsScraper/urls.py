@@ -11,8 +11,8 @@ urlpatterns = patterns('',
     # Examples:
     
     
-    # url(r'^story/$', StoryListView.as_view()),
-    # url(r'^story/(?P<pk>[0-9]+)/$', StoryDetailView.as_view()),
+    url(r'^api/story/$', StoryListView.as_view()),
+    url(r'^api/story/(?P<pk>[0-9]+)/$', StoryDetailView.as_view()),
     url(r'^$', index, name='index')
 )
 

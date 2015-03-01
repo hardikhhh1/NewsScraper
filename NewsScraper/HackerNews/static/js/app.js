@@ -3,11 +3,15 @@ console.log("app.js loaded")
 angular.module('ScraperApp', [
   'ui.router', 
   'ngResource',
+  'ScraperApp.services',
   'ScraperApp.controllers',
-  ])
 
-.config(function($interpolateProvider, $httpProvider, 
-    $resourceProvider, $stateProvider, $urlRouterProvider) {
+  ])
+.service('StoryService', function(){
+     this.name='test'
+})
+
+.config(function ($interpolateProvider, $httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
 
     console.log("config method called")
@@ -21,9 +25,9 @@ angular.module('ScraperApp', [
 
     $urlRouterProvider.otherwise('/')
 
-    $stateProvider.state('list', {
+    $stateProvider.state('home', {
       url : '/',
-      templateUrl : 'static/story-list.html',
+      templateUrl : 'static/story_list.html',
       controller : 'StoryListController',
     })
 })

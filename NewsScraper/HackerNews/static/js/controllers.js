@@ -1,10 +1,16 @@
 var hackerNewsController = angular.module('ScraperApp.controllers', []);
 
-hackerNewsController.controller('StoryListController',['$scope', function StoryCtrl($scope){
+hackerNewsController.controller('StoryListController', function StoryCtrl($scope, Story){
 
 	console.log("hacker news controller called")
   	$scope.home_message = "The list of stories are :";
-}]);
+
+  	// console.log(StoryService.name)
+  	Story.query(function(response){
+ 		$scope.stories = response;
+  	})
+
+});
 
 
 
