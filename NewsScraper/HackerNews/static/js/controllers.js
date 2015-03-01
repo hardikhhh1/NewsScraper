@@ -7,15 +7,15 @@ hackerNewsController.controller('StoryListController', function StoryCtrl($scope
 
   	// console.log(StoryService.name)
   	Story.query(function(response){
- 		$scope.stories = response;
+ 		   $scope.stories = response;
   	})
 
-  	$scope.submitReview = function (story, is_interested){
-  		story.is_interested  = is_interested;
+  	$scope.submitReview = function (story){
+      // console.log(story.is_interested)
   		// console.log(story)
-  		// var updatedStory = new Story(story);
+      // story.is_interested = false;
   		story.$update(function (){
-  			 
+  			 console.log("story has been updated")
   		})
   	}
 

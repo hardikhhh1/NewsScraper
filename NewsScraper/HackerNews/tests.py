@@ -11,41 +11,23 @@ class HackerNewsTest(TestCase):
 	
 	def test_save_item(self):
 
-		story_model = StoryModel(title=item.title, 
-				text       	   = item.text,
-				link    	   = item.url,
-				# domain  	   = item.domain,
-				points    	   = item.score,
-				submitter      = item.by,
-				published_time = item.submission_time,
-				# num_comments   = item.num_comments
-				)
-		story_model.save()
-		print("saved to the database")
-		# hn = HackerNews()
+		hn = HackerNews()
+		item_id_list = hn.top_stories()
+		for item_id in item_id_list[:5]:
+			
+			try:
+				is_pres_count = StoryModel.objects.filter(story_id=item_id).count()
 
-		# top_story_ids = hn.top_stories()
-		# print(top_story_ids)
-		# print(top_story_ids[:1])
-		# for story_id in top_story_ids[:1]:
-			# print(story_id)
-			# item = hn.get_item(story_id)
-			# if(item.item_type  == 'story'):
-				# print(item.submission_time)
+				if (is_pres_count == 0):
+					continue
+			except Exception as e:
+				print("Error occured : %s" % (e))
+				continue
 
-
-			# story_model = StoryModel(title=item.title, 
-			# 	text       	   = item.text,
-			# 	link    	   = item.url,
-			# 	# domain  	   = item.domain,
-			# 	points    	   = item.score,
-			# 	submitter      = item.by,
-			# 	published_time = item.submission_time,
-			# 	# num_comments   = item.num_comments
-			# 	)
-			# story_model.save()
-			# print("saved to the database")
-
-
-
-	
+			hn_story = hn.get_item(item_id)
+			story = StoryModel(title=hn_story.title,
+				link=hn_story.url,
+				points=hn_story.score,
+				# submitter=hn_story
+				published_time=hn_story.submission_time)
+			story.save()

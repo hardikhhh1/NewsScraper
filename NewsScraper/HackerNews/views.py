@@ -3,6 +3,7 @@ from rest_framework import generics, permissions
 from serializers import StorySerializers
 from models import StoryModel
 from rest_framework import viewsets
+from HackerNews import classifier
 # from django import csrf_protect, ensure_csrf_cookie
 
 
@@ -11,7 +12,17 @@ from rest_framework import viewsets
 # @csrf_protect
 # @ensure_csrf_cookie
 def index(request):
-	return render(request, 'index.html')
+
+    from HackerNews.scraper import scrape_hacker_news
+    try:
+        # stories_list = scrape_hacker_news()
+        # classifier.temp_method()
+        pass
+        # StoryModel.objects.bulk_create(stories_list)
+    except Exception as e:
+        print('not able to get the list')
+
+    return render(request, 'index.html')
 
 
 

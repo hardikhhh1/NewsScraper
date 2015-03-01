@@ -5,12 +5,17 @@ TEST PAGE - STORY LIST PAGE OPENED
 <div class="stories" id="story-target">
   <div class="story-container" ng-repeat="story in stories">
     <div class="story-details"> 
-    <a href="[[ story.link ]]" target="_blank">[[ story.title ]]  </a>
-	    <button class="btn btn-info" ng-click="submitReview(story,true)" value="True">Good</button>
-		<button class="btn btn-alert" ng-click="submitReview(story,false)" value="False">Bad</button>
-		<button class="btn btn-alert" ng-click="deleteReview(story)">Delete</button>
+    <span class="story-title">
+    	<a href="[[ story.link ]]" target="_blank">[[ story.title ]]  </a>
+    </span>
+    <span>
+	    <input type="checkbox" ng-change="submitReview(story)" ng-model="story.is_interested">Good</input>
+	
+		<button class="btn btn-danger" ng-click="deleteReview(story)">Delete</button>
+		</span>
+		
     </div>
 
-    
+    </br>
   </div>
 </div>
