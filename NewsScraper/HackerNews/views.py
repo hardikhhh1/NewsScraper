@@ -15,13 +15,13 @@ def index(request):
 
     from HackerNews.scraper import scrape_hacker_news
     try:
-        # stories_list = scrape_hacker_news()
+        stories_list = scrape_hacker_news()
         # classifier.temp_method()
-        pass
-        # StoryModel.objects.bulk_create(stories_list)
+        # pass
+        StoryModel.objects.bulk_create(stories_list)
     except Exception as e:
-        print('not able to get the list')
-
+        print('not able to get the list : %s' %(e))
+ 
     return render(request, 'index.html')
 
 

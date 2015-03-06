@@ -10,7 +10,7 @@ def scrape_hacker_news():
 	hn = HackerNews()
 	item_id_list = hn.top_stories()
 	stories_list = []
-	for item_id in item_id_list[:10]:
+	for item_id in item_id_list:
 		print item_id
 		try:
 			# is_pres_count = StoryModel.objects.filter(story_id=item_id).count()
@@ -30,7 +30,7 @@ def scrape_hacker_news():
 					title=hn_story.title,
 					link=hn_story.url,
 					points=hn_story.score,
-					content = content,
+					# content = content,
 					# submitter=hn_story
 					published_time=hn_story.submission_time)
 				# story.save()
@@ -42,7 +42,7 @@ def scrape_hacker_news():
 		except Exception as e:
 				print("error while retrieving : %s" % (e))
 				continue
-
+	print("the size of the story list is %s" %(len(stories_list)))
 	return stories_list
 			# story.save()
 		
